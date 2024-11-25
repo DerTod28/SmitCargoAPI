@@ -2,7 +2,7 @@
 Test task
 
 Документация
-![Image alt](https://github.com/DerTod28/SmitCargoAPI/api_cargo.png)
+![Image alt](https://github.com/DerTod28/SmitCargoAPI/blob/main/api_cargo.png)
 
 
 ## Table of Contents
