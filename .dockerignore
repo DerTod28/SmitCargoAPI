@@ -1,0 +1,8 @@
+.env
+.pre-commit-config.yaml
+setup.cfg
+state
+__pycache__/
+*.py[cod]
+.venv
+postgres_data/

@@ -1,0 +1,160 @@
+[tool.poetry]
+name = "smitcargoapi"
+version = "0.1.0"
+description = "Test api for smitю.studio"
+authors = ["viktorsosnovskih <ads123321@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.11.3"
+python-jose = "^3.3.0"
+fastapi = {extras = ["all"], version = "^0.115.5"}
+psycopg2-binary = "^2.9.10"
+pydantic = "^2.10.1"
+pydantic-settings = "^2.6.1"
+SQLAlchemy = "^2.0.36"
+sqlmodel = "^0.0.22"
+pyjwt = "^2.9.0"
+asyncpg = "^0.30.0"
+passlib = "^1.7.4"
+bcrypt = "^4.2.1"
+gunicorn = "^23.0.0"
+aiokafka = "^0.12.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "23.7.0"
+flake8 = "6.0.0"
+flake8-blind-except = "0.2.1"
+flake8-colors = "0.1.9"
+flake8-commas = "2.1.0"
+flake8-debugger = "4.1.2"
+flake8-django = "1.3"
+flake8-fixme = "1.1.1"
+flake8-print = "5.0.0"
+flake8-quotes = "3.3.2"
+flake8-variables-names = "0.0.5"
+isort = "5.12.0"
+locust = "2.15.1"
+mixer = "^7.2.2"
+mypy = "1.5.0"
+pylint = "2.17.5"
+pylint-plugin-utils = "0.8.2"
+pytest = "^7.4.0"
+pytest-env = "^0.8.2"
+watchdog = {extras = ["watchmedo"], version = "^3.0.0"}
+reload = "^0.9"
+develop = "^0.2.1"
+pre-commit = "^3.3.3"
+flake8-pyproject = "^1.2.3"
+types-requests = "2.31.0.2"
+
+
+[tool.isort]
+line_length = 120
+multi_line_output = 3
+include_trailing_comma = true
+
+[tool.black]
+line-length = 120
+target-version = ['py311']
+skip-string-normalization = true
+
+[tool.pylint.MASTER]
+load-plugins = [
+    'pylint.extensions.check_elif',
+    'pylint.extensions.bad_builtin',
+    'pylint.extensions.docparams',
+    'pylint.extensions.for_any_all',
+    'pylint.extensions.set_membership',
+    'pylint.extensions.code_style',
+    'pylint.extensions.overlapping_exceptions',
+    'pylint.extensions.typing',
+    'pylint.extensions.redefined_variable_type',
+    'pylint.extensions.comparison_placement',
+    'pylint.extensions.mccabe',
+]
+
+[tool.pylint.'MESSAGES CONTROL']
+enable=[
+    'use-symbolic-message-instead',
+    'useless-suppression',
+]
+disable=[
+    'attribute-defined-outside-init',
+    'invalid-name',
+    'missing-docstring',
+    'missing-class-docstring',
+    'missing-function-docstring',
+    'missing-module-docstring',
+    'protected-access',
+    'too-few-public-methods',
+    # handled by black
+    'format',
+    # We anticipate #3512 where it will become optional
+    'fixme',
+    'cyclic-import',
+    'import-error',
+    'too-many-ancestors',
+    'consider-using-namedtuple-or-dataclass',
+]
+
+[tool.pylint.'SIMILARITIES']
+ignore-imports = true
+ignore-signatures = true
+
+[tool.pylint.'FORMAT']
+min-similarity-lines = 10
+fail-under = 9.7
+py-version = 3.9
+good-names=[
+    'db',
+    'i',
+    'j',
+    'k',
+    'ex',
+    'Run',
+    'x', 'x1', 'x2', 'x3', 'x4', 'x5',
+    'y',
+    'df',
+    '_'
+]
+max-line-length = 120
+disable = [
+    'c-extension-no-member',
+    'consider-using-assignment-expr',
+    'fixme',
+    'import-outside-toplevel',
+    'locally-disabled',
+    'suppressed-message',
+    'missing-class-docstring',
+    'missing-function-docstring',
+    'missing-module-docstring',
+    'too-few-public-methods',
+    'too-many-arguments',
+    'too-many-instance-attributes',
+    'too-many-locals',
+    'wrong-import-position',
+]
+
+[tool.flake8]
+ignore = ['T101']
+max-line-length = 120
+exclude = [
+  'static',
+  '*/migrations/*',
+  'frontend',
+  '.git',
+  '__pycache__',
+  '.venv',
+  'venv',
+  'dist',
+]
+inline-quotes = 'single'
+multiline-quotes = 'double'
+max-complexity = 11
+max-annotations-complexity = 4
+per-file-ignores = []
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
